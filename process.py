@@ -24,7 +24,7 @@ def _download_raw_file(site: str, date: str, product: str = None) -> str:
     else:
         url = f'{URL}model-files'
     metadata = requests.get(url, payload).json()
-    assert len(metadata) == 1
+    assert len(metadata) <= 1
     if not metadata:
         raise RuntimeError
     filename = metadata[0]['filename']
